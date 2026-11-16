@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>logistics-tracker · 物流轨迹跟踪</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <h1>🚚 物流轨迹跟踪 <span class="sub">多承运商识别 · 全链路时间线</span></h1>
+</header>
+
+<main class="layout">
+  <div class="query-card">
+    <div class="query-row">
+      <input id="tn-input" type="text" placeholder="输入运单号，如 SF123456789012 / 73123456789012 / JD12345678901234" spellcheck="false">
+      <select id="route-type">
+        <option value="domestic">国内线路</option>
+        <option value="cross">跨境线路</option>
+      </select>
+      <button id="btn-query" class="btn primary">查询</button>
+    </div>
+    <div class="quick">
+      <span>试试：</span>
+      <button class="qk" data-tn="SF123456789012">顺丰 SF123456789012</button>
+      <button class="qk" data-tn="73123456789012">中通 73123456789012</button>
+      <button class="qk" data-tn="JD12345678901234">京东 JD12345678901234</button>
+      <button class="qk" data-tn="EA123456789CN">EMS EA123456789CN</button>
+    </div>
+  </div>
+
+  <div id="result" class="result hidden">
+    <div class="summary-card">
+      <div class="sum-left">
+        <div class="carrier-badge" id="carrier-badge"></div>
+        <div>
+          <div class="tn" id="sum-tn"></div>
+          <div class="status-line" id="sum-status"></div>
+        </div>
+      </div>
+      <div class="sum-right">
+        <div class="eta-label" id="eta-label">预计送达</div>
+        <div class="eta" id="sum-eta"></div>
+      </div>
+    </div>
+
+    <div class="route-bar" id="route-bar"></div>
+
+    <div class="timeline-card">
+      <h3>物流详情</h3>
+      <div id="timeline" class="timeline"></div>
+    </div>
+  </div>
+
+  <div id="error-box" class="error-box hidden"></div>
+</main>
+
+<script src="track-engine.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
